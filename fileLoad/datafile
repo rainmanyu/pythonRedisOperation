@@ -1,0 +1,22 @@
+{
+	"size": 0,
+	"list": [
+		{
+			"operatorGroup": "",
+			"operatorName": "games.tipico.de",
+			"domainId": 2225,
+			"gmENV": "ENV7",
+			"partnerID": "gamestipicoprod",
+			"partnerKey": "543onO24dnw!",
+			"environment": "Production",
+			"region": "",
+			"status": "Officially done ",
+			"playerAPI": "https://tipico-games-api.prod.norway.everymatrix.com/v1/player/swagger-ui.html",
+			"casinoAPI": "https://tipico-games-api.prod.norway.everymatrix.com/v1/casino/swagger-ui.html",
+			"liveLobby": "",
+			"GIC": "",
+			"Notification": "",
+			"BalanceUpdate": ""
+		}
+	]
+}

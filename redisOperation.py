@@ -24,5 +24,10 @@ def get_keys():
     print(len(keys))
 
 
+def delete_all():
+    for elem in r.keys():
+        r.delete(elem)
+
+
 # get_keys()
 
