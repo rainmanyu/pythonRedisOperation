@@ -6,7 +6,6 @@ import jsonUtil
 def load_file(filename):
     with open(filename, 'r') as jsonfile:
         json_string_rtn = json.load(jsonfile)
-        print(type(json_string_rtn))
         return json_string_rtn
 
 

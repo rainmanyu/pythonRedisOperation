@@ -10,7 +10,7 @@ def baseurl(fullurl, key):
 
 
 def rename_domain_key(key):
-    if redisOperation.read_json(key) is not None:
+    if redisOperation.read_site(key) is not None:
         key = key + "_1"
     else:
         key = key
@@ -46,13 +46,13 @@ def parse_json(json_content):
 
         # add casino version
         update_version(element, casino_base,
-                       config.constants.c_player_version_path,
-                       config.constants.c_player_version_tag,
-                       config.constants.c_player_version_deploy_time)
+                       config.constants.c_casino_version_path,
+                       config.constants.c_casino_version_tag,
+                       config.constants.c_casino_version_deploy_time)
 
         # add FE, the default value
         element.update({config.constants.c_frontend_tag: config.constants.c_frontend_src_em})
 
         # rename duplicate id
         key = rename_domain_key(str(element['domainId']))
-        redisOperation.write_json(key, element)
+        redisOperation.write_site(key, element)
