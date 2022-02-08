@@ -10,3 +10,5 @@ c_casino_version_deploy_time = 'casino_version_deploy_time'
 c_frontend_tag = 'frontend'
 c_frontend_src_em = 'EM_FE'
 c_frontend_src_operator = 'operator_FE'
+
+c_job_interval_minutes = 30

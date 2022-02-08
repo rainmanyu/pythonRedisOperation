@@ -4,6 +4,7 @@ from flask import Flask, request, Response, jsonify
 from flask_cors import CORS
 
 import redisOperation
+import timer.timer
 
 app = Flask(__name__)
 CORS(app)
@@ -31,4 +32,5 @@ def get_sites():
 
 
 if __name__ == '__main__':
+    timer.timer.tl.start(block=False)
     app.run(host='0.0.0.0', port=9888)

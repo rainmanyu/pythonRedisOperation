@@ -2,7 +2,9 @@ import json
 import redisOperation
 import httpUtils.getVersion
 import config.constants
-
+import log.fileLogger
+import time
+import timeit
 
 def baseurl(fullurl, key):
     pos = fullurl.find(key)
@@ -56,3 +58,40 @@ def parse_json(json_content):
         # rename duplicate id
         key = rename_domain_key(str(element['domainId']))
         redisOperation.write_site(key, element)
+
+
+def update_site(element):
+    # set playerAPI base url
+    player_base = baseurl(element['playerAPI'], 'v1/player/')
+    element.update({"player_base": player_base})
+
+    # add casino version
+    update_version(element, player_base,
+                   config.constants.c_player_version_path,
+                   config.constants.c_player_version_tag,
+                   config.constants.c_player_version_deploy_time)
+
+    # set casinoAPI base url
+    casino_base = baseurl(element['casinoAPI'], 'v1/casino/')
+    element.update({"casino-base": casino_base})
+
+    # add casino version
+    update_version(element, casino_base,
+                   config.constants.c_casino_version_path,
+                   config.constants.c_casino_version_tag,
+                   config.constants.c_casino_version_deploy_time)
+
+    # add FE, the default value
+    element.update({config.constants.c_frontend_tag: config.constants.c_frontend_src_em})
+
+
+def update_versions():
+    log.fileLogger.write("Update sites version starts : {} \r".format(time.ctime()))
+    start = timeit.default_timer()
+    sites = redisOperation.read_sites()
+    for element in sites['list']:
+        update_site(element)
+        log.fileLogger.write("update operator : {} , element: {} \r".format(element['domainId'], element))
+        redisOperation.write_site(element['domainId'], element)
+    stop = timeit.default_timer()
+    log.fileLogger.write("Update sites version ends. total spent time : {} \r".format(stop-start))

@@ -37,6 +37,3 @@ def read_sites():
 def delete_all():
     for elem in r.keys():
         r.delete(elem)
-
-
-read_sites()
