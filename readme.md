@@ -12,6 +12,7 @@ yum install python3 -y
 pip3 install flask
 pip3 install flask_cors
 pip3 install redis
+pip3 install Timeloop
 git clone -b main https://github.com/rainmanyu/pythonRedisOperation.git
 
 nohup python3 server.py &
