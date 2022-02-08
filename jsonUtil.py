@@ -32,7 +32,7 @@ def parse_json(json_content):
     for element in json_content['list']:
         # set playerAPI base url
         player_base = baseurl(element['playerAPI'], 'v1/player/')
-        element.update({"player-base": player_base})
+        element.update({"player_base": player_base})
 
         # add casino version
         update_version(element, player_base,
