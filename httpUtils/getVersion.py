@@ -7,11 +7,13 @@ import logging
 def http_get(url, path):
     try:
         # real_url = url.replace("https://", "")
-        conn = http.client.HTTPSConnection(url)
-        conn.request("GET", path)
-        r1 = conn.getresponse()
-        data1 = r1.read()  # This will return entire content.
-        return json.loads(data1)
+        # conn = http.client.HTTPSConnection(url)
+        # conn.request("GET", path)
+        # r1 = conn.getresponse()
+        # data1 = r1.read()  # This will return entire content.
+        # return json.loads(data1)
+        print(url + path)
+        return json.loads('{"error":"JSONDecodeError"}')
     except ConnectionRefusedError:
         print(url + path)
         return json.loads('{"error":"ConnectionRefusedError"}')
