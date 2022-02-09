@@ -14,4 +14,4 @@ c_frontend_src_operator = 'operator_FE'
 # update time
 c_update_time = 'update_time'
 
-c_job_interval_minutes = 10
+c_job_interval_minutes = 30
