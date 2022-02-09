@@ -5,12 +5,9 @@ import logging
 
 
 def http_get(url, path):
-    print(url)
     try:
-        real_url = url.replace("https://", "")
-        conn = http.client.HTTPSConnection(real_url)
-        print(url)
-        print(real_url)
+        # real_url = url.replace("https://", "")
+        conn = http.client.HTTPSConnection(url)
         conn.request("GET", path)
         r1 = conn.getresponse()
         data1 = r1.read()  # This will return entire content.
