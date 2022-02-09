@@ -35,4 +35,4 @@ def get_sites():
 if __name__ == '__main__':
     logging.basicConfig(filename='run.log', level=logging.DEBUG, format='%(asctime)s %(message)s')
     timer.timer.tl.start(block=False)
-    app.run(host='0.0.0.0', port=9888)
+    app.run(host='0.0.0.0', port=9889)
