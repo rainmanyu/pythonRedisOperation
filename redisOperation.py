@@ -6,7 +6,6 @@ r = redis.Redis(host='10.2.16.113', port=6379)
 
 def write_site(domain_id, operator_info):
     b_return = r.set(domain_id, json.dumps(operator_info))
-    print('finish write domain:' + domain_id)
     return b_return
 
 
