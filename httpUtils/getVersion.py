@@ -1,11 +1,15 @@
 import http.client
 import json
 from json import JSONDecodeError
+import logging
 
 
 def http_get(url, path):
     try:
-        conn = http.client.HTTPSConnection(url.replace("https://", ""))
+        real_url = url.replace("https://", "")
+        conn = http.client.HTTPSConnection(real_url)
+        print(url)
+        print(real_url)
         conn.request("GET", path)
         r1 = conn.getresponse()
         data1 = r1.read()  # This will return entire content.
