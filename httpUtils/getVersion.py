@@ -9,6 +9,9 @@ def http_get(url, path):
         if not url:
             return json.loads('{"error":"OtherError"}')
         else:
+            url = url.replace("https://", "")
+            url = url.replace("http://", "")
+            print(url)
             conn = http.client.HTTPSConnection(url)
             conn.request("GET", path)
             r1 = conn.getresponse()
