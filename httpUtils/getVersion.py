@@ -11,7 +11,6 @@ def http_get(url, path):
         else:
             url = url.replace("https://", "")
             url = url.replace("http://", "")
-            print(url)
             conn = http.client.HTTPSConnection(url)
             conn.request("GET", path)
             r1 = conn.getresponse()

@@ -26,6 +26,7 @@ def update_version(element, base, path, tag_name, deploy_time_name):
         element.update({tag_name: version_json['tag']})
         element.update({deploy_time_name: version_json['deployTime']})
     else:
+        print('update error. element:' + json.dumps(element))
         element.update({tag_name: 'not_ready'})
         element.update({deploy_time_name: 'not_ready'})
 
