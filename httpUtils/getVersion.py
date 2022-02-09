@@ -5,6 +5,7 @@ import logging
 
 
 def http_get(url, path):
+    print(url)
     try:
         real_url = url.replace("https://", "")
         conn = http.client.HTTPSConnection(real_url)
