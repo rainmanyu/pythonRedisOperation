@@ -92,7 +92,7 @@ def update_versions():
     for element in sites['list']:
         update_site(element)
         logging.info("update operator : %s , element: %s ", element['domainId'], element)
-        # redisOperation.write_site(element['domainId'], element)
+        redisOperation.write_site(element['domainId'], element)
     stop = timeit.default_timer()
     logging.info("Update sites version ends. total spent time : %s ", (stop-start))
     logging.info("")
