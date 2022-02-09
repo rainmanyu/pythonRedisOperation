@@ -2,7 +2,7 @@ import json
 import redisOperation
 import httpUtils.getVersion
 import config.constants
-import log.fileLogger
+import logging
 import time
 import timeit
 
@@ -81,17 +81,21 @@ def update_site(element):
                    config.constants.c_casino_version_tag,
                    config.constants.c_casino_version_deploy_time)
 
-    # add FE, the default value
-    element.update({config.constants.c_frontend_tag: config.constants.c_frontend_src_em})
+    # update time
+    element.update({config.constants.c_update_time: time.ctime()})
 
 
 def update_versions():
-    log.fileLogger.write("Update sites version starts : {} \r".format(time.ctime()))
+    logging.info("Update sites version starts : %s ", time.ctime())
     start = timeit.default_timer()
     sites = redisOperation.read_sites()
     for element in sites['list']:
         update_site(element)
-        log.fileLogger.write("update operator : {} , element: {} \r".format(element['domainId'], element))
-        redisOperation.write_site(element['domainId'], element)
+        logging.info("update operator : %s , element: %s ", element['domainId'], element)
+        # redisOperation.write_site(element['domainId'], element)
     stop = timeit.default_timer()
-    log.fileLogger.write("Update sites version ends. total spent time : {} \r".format(stop-start))
+    logging.info("Update sites version ends. total spent time : %s ", (stop-start))
+    logging.info("")
+    logging.info("")
+    logging.info("")
+    logging.info("")

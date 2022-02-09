@@ -5,6 +5,7 @@ from flask_cors import CORS
 
 import redisOperation
 import timer.timer
+import logging
 
 app = Flask(__name__)
 CORS(app)
@@ -32,5 +33,6 @@ def get_sites():
 
 
 if __name__ == '__main__':
+    logging.basicConfig(filename='run.log', encoding='utf-8', level=logging.DEBUG, format='%(asctime)s %(message)s')
     timer.timer.tl.start(block=False)
     app.run(host='0.0.0.0', port=9888)
