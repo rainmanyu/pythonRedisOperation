@@ -17,5 +17,6 @@ git clone -b main https://github.com/rainmanyu/pythonRedisOperation.git
 
 nohup python3 server.py &
 ps aux|grep python3
+kill $(ps aux | grep 'python3 server.py' | tr -s ' '| cut -d ' ' -f 2)
 
 http://10.2.47.17:9888/sites

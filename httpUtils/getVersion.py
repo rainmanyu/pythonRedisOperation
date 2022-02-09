@@ -5,7 +5,7 @@ from json import JSONDecodeError
 
 def http_get(url, path):
     try:
-        conn = http.client.HTTPSConnection(url.replace("https://", ""));
+        conn = http.client.HTTPSConnection(url.replace("https://", ""))
         conn.request("GET", path)
         r1 = conn.getresponse()
         data1 = r1.read()  # This will return entire content.
