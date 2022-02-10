@@ -94,8 +94,10 @@ def update_versions():
         update_site(element)
         redisOperation.write_site(element['domainId'], element)
     stop = timeit.default_timer()
-    logging.info("Update sites version ends. total spent time : %s ", (stop-start))
+    spent_time = stop-start
+    logging.info("Update sites version ends. total spent time : %s ", spent_time)
     logging.info("")
     logging.info("")
     logging.info("")
     logging.info("")
+    return spent_time

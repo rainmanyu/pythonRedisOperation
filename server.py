@@ -4,8 +4,8 @@ from flask import Flask, request, Response, jsonify
 from flask_cors import CORS
 
 import redisOperation
-import timer.timer
 import logging
+import jsonUtil
 
 app = Flask(__name__)
 CORS(app)
@@ -32,7 +32,23 @@ def get_sites():
     return jsonify(redisOperation.read_sites())
 
 
+@app.route('/update_version')
+def update_version():
+    logging.info("Update sites version manually")
+    flag = False
+    spent_time = 0
+    try:
+        spent_time = jsonUtil.update_versions()
+        flag = True
+    finally:
+        if flag:
+            logging.info("Manual update successfully.")
+            return jsonify({"status": "ok", "spent_time": spent_time})
+        else:
+            logging.info("Manual update failed.")
+            return jsonify({"status": "error", "spent_time": spent_time})
+
+
 if __name__ == '__main__':
     logging.basicConfig(filename='run.log', level=logging.DEBUG, format='%(asctime)s %(message)s')
-    timer.timer.tl.start(block=False)
     app.run(host='0.0.0.0', port=9889)

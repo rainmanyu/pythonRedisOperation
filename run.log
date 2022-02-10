@@ -1,0 +1,147 @@
+2022-02-10 07:59:44,477  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-02-10 07:59:44,477  * Running on http://10.0.5.57:9889/ (Press CTRL+C to quit)
+2022-02-10 08:00:50,507 Update sites version manually
+2022-02-10 08:00:50,507 Update sites version starts : Thu Feb 10 08:00:50 2022 
+2022-02-10 08:00:53,071 update error. domainId: 1990, operator name: jojoBet 
+2022-02-10 08:00:56,271 update error. domainId: 2003, operator name: Odeonbet 
+2022-02-10 08:00:58,558 update error. domainId: 2411, operator name: Foliatticasino.mx 
+2022-02-10 08:01:00,796 update error. domainId: 1159, operator name: Playshangrila.com 
+2022-02-10 08:01:03,178 update error. domainId: 1014, operator name: Wunderino.com 
+2022-02-10 08:01:05,460 update error. domainId: 2550, operator name: goaplayer.com 
+2022-02-10 08:01:06,746 update error. domainId: 1183, operator name: SpinIt 
+2022-02-10 08:01:06,746 update error. domainId: 1183, operator name: SpinIt 
+2022-02-10 08:01:10,285 update error. domainId: 1796, operator name: GenesisCasino 
+2022-02-10 08:01:10,286 update error. domainId: 1796, operator name: GenesisCasino 
+2022-02-10 08:01:11,906 update error. domainId: 2339, operator name: Raisedbet.com 
+2022-02-10 08:01:19,839 update error. domainId: 2005, operator name: Matbet 
+2022-02-10 08:01:21,930 update error. domainId: 1891, operator name: Pelaa 
+2022-02-10 08:01:21,930 update error. domainId: 1891, operator name: Pelaa 
+2022-02-10 08:01:22,696 update error. domainId: 1160, operator name: ShangrilaLive.com 
+2022-02-10 08:01:26,021 update error. domainId: 1243, operator name: Sloty 
+2022-02-10 08:01:26,021 update error. domainId: 1243, operator name: Sloty 
+2022-02-10 08:01:27,067 update error. domainId: 2002, operator name: Betfinal 
+2022-02-10 08:01:28,925 update error. domainId: 2569, operator name: Dream88.com 
+2022-02-10 08:01:28,925 update error. domainId: 2569, operator name: Dream88.com 
+2022-02-10 08:01:29,745 update error. domainId: 2332, operator name: Liderbahis.com 
+2022-02-10 08:01:31,478 update error. domainId: 2248, operator name: mybet.de 
+2022-02-10 08:01:31,480 update error. domainId: 2248, operator name: mybet.de 
+2022-02-10 08:01:32,253 update error. domainId: 2560, operator name: Winypto.com 
+2022-02-10 08:01:32,930 update error. domainId: 2367, operator name: Izibet.com 
+2022-02-10 08:01:32,930 update error. domainId: 2367, operator name: Izibet.com 
+2022-02-10 08:01:33,736 update error. domainId: 2421, operator name:  Bet-at-home.com 
+2022-02-10 08:01:34,957 update error. domainId: 2130, operator name: Opap 
+2022-02-10 08:01:35,679 update error. domainId: 1066, operator name: Dragonara.com 
+2022-02-10 08:01:35,679 update error. domainId: 1066, operator name: Dragonara.com 
+2022-02-10 08:01:35,933 update error. domainId: 2154, operator name: CasinoPlanet 
+2022-02-10 08:01:35,933 update error. domainId: 2154, operator name: CasinoPlanet 
+2022-02-10 08:01:39,691 update error. domainId: 2142, operator name: CasinoPlanet 
+2022-02-10 08:01:39,691 update error. domainId: 2142, operator name: CasinoPlanet 
+2022-02-10 08:01:40,459 update error. domainId: 2491, operator name: stake77.com 
+2022-02-10 08:01:42,822 update error. domainId: 2304, operator name: WinMasters.gr 
+2022-02-10 08:01:43,502 update error. domainId: 2283, operator name: Izibet.com 
+2022-02-10 08:01:43,503 update error. domainId: 2283, operator name: Izibet.com 
+2022-02-10 08:01:44,340 update error. domainId: 2320, operator name: winmasters.ro 
+2022-02-10 08:01:45,581 update error. domainId: 2528, operator name: bet-at-home.de 
+2022-02-10 08:01:48,855 update error. domainId: 2125, operator name: Betsofa.com 
+2022-02-10 08:01:51,029 update error. domainId: 1131, operator name: Dinamobet 
+2022-02-10 08:01:53,203 update error. domainId: 1161, operator name: ShangrilaVIP.com 
+2022-02-10 08:01:53,868 update error. domainId: 2200, operator name: CasinoLab 
+2022-02-10 08:01:53,868 update error. domainId: 2200, operator name: CasinoLab 
+2022-02-10 08:01:54,703 update error. domainId: 2554, operator name: betathome-com-showcase 
+2022-02-10 08:01:56,885 update error. domainId: 2006, operator name: Lunabet 
+2022-02-10 08:01:59,337 update error. domainId: 2305, operator name: Casinodayim 
+2022-02-10 08:02:02,534 update error. domainId: 2269, operator name: PocketPlay 
+2022-02-10 08:02:03,805 update error. domainId: 2225, operator name: games.tipico.de 
+2022-02-10 08:02:06,256 update error. domainId: 2216, operator name: Megabahis 
+2022-02-10 08:02:07,328 update error. domainId: 2217, operator name: Nakitbahis (int) 
+2022-02-10 08:02:09,636 update error. domainId: 2287, operator name: Betrnk 
+2022-02-10 08:02:12,361 update error. domainId: 2331, operator name: Pusulabet.com 
+2022-02-10 08:02:13,109 update error. domainId: 1006, operator name: ArtemisBet 
+2022-02-10 08:02:14,326 update error. domainId: 1896, operator name: CasinoJoy 
+2022-02-10 08:02:14,326 update error. domainId: 1896, operator name: CasinoJoy 
+2022-02-10 08:02:15,093 update error. domainId: 2510, operator name: uk.bet-at-home.com 
+2022-02-10 08:02:18,198 update error. domainId: 2517, operator name: Hizlicasino 
+2022-02-10 08:02:18,909 update error. domainId: 2192, operator name: Betdoksan 
+2022-02-10 08:02:21,487 update error. domainId: 2192, operator name: Betdoksan 
+2022-02-10 08:02:21,869 update error. domainId: 1006, operator name: ArtemisBet 
+2022-02-10 08:02:23,046 update error. domainId: 2356, operator name: winmasters.com.cy 
+2022-02-10 08:02:24,337 update error. domainId: 2349, operator name: Conticazino.ro 
+2022-02-10 08:02:26,060 update error. domainId: 1111, operator name: GmMilestone1.5 
+2022-02-10 08:02:26,061 update error. domainId: 1111, operator name: GmMilestone1.5 
+2022-02-10 08:02:26,857 update error. domainId: 2373, operator name: Totalbet.ro 
+2022-02-10 08:02:28,090 update error. domainId: 2066, operator name: Kassu 
+2022-02-10 08:02:28,091 update error. domainId: 2066, operator name: Kassu 
+2022-02-10 08:02:28,921 update error. domainId: 1244, operator name: Tipico.com 
+2022-02-10 08:02:30,212 update error. domainId: 6, operator name: Jetbull 
+2022-02-10 08:02:31,492 update error. domainId: 2096, operator name: demo prod 
+2022-02-10 08:02:35,209 update error. domainId: 2548, operator name: 9winz.com 
+2022-02-10 08:02:36,556 update error. domainId: 1930, operator name: CasinoGods 
+2022-02-10 08:02:36,556 update error. domainId: 1930, operator name: CasinoGods 
+2022-02-10 08:02:37,335 update error. domainId: 1948, operator name: Mybet.com 
+2022-02-10 08:02:37,335 update error. domainId: 1948, operator name: Mybet.com 
+2022-02-10 08:02:38,117 update error. domainId: 1258, operator name: VegasHero 
+2022-02-10 08:02:38,118 update error. domainId: 1258, operator name: VegasHero 
+2022-02-10 08:02:39,304 update error. domainId: 2574, operator name: Dream88.com 
+2022-02-10 08:02:39,305 update error. domainId: 2574, operator name: Dream88.com 
+2022-02-10 08:02:40,058 update error. domainId: 2034, operator name: Betsmove 
+2022-02-10 08:02:43,661 update error. domainId: 2521, operator name: Luckyways.com 
+2022-02-10 08:02:44,970 update error. domainId: 2215, operator name: Kavbet 
+2022-02-10 08:02:46,194 update error. domainId: 2223, operator name: Elite24bet.com 
+2022-02-10 08:02:47,427 update error. domainId: 2218, operator name: Holiganbet (int) 
+2022-02-10 08:02:51,084 update error. domainId: 2119, operator name: Casoola 
+2022-02-10 08:02:51,084 update error. domainId: 2119, operator name: Casoola 
+2022-02-10 08:02:51,886 update error. domainId: 2474, operator name: Player.ro 
+2022-02-10 08:02:57,785 update error. domainId: 2224, operator name: Elitebet.pl 
+2022-02-10 08:02:58,234 update error. domainId: 2224, operator name: Elitebet.pl 
+2022-02-10 08:02:59,066 update error. domainId: 2362, operator name: Vindercasino.dk 
+2022-02-10 08:02:59,743 update error. domainId: 2362, operator name: Conticazino.ro 
+2022-02-10 08:03:02,924 update error. domainId: 2098, operator name: Turboslot 
+2022-02-10 08:03:05,192 update error. domainId: 1236, operator name: Casino.tv 
+2022-02-10 08:03:06,495 update error. domainId: 1909, operator name: Pelaa 
+2022-02-10 08:03:06,495 update error. domainId: 1909, operator name: Pelaa 
+2022-02-10 08:03:06,742 update error. domainId: 2127, operator name: Casoola 
+2022-02-10 08:03:06,742 update error. domainId: 2127, operator name: Casoola 
+2022-02-10 08:03:08,261 update error. domainId: 1096, operator name: CasinoCruise 
+2022-02-10 08:03:08,261 update error. domainId: 1096, operator name: CasinoCruise 
+2022-02-10 08:03:09,969 update error. domainId: 1917, operator name: CasinoGods 
+2022-02-10 08:03:09,970 update error. domainId: 1917, operator name: CasinoGods 
+2022-02-10 08:03:10,749 update error. domainId: 2358, operator name: wunderino.int 
+2022-02-10 08:03:12,490 update error. domainId: 1873, operator name: CasinoJoy 
+2022-02-10 08:03:12,490 update error. domainId: 1873, operator name: CasinoJoy 
+2022-02-10 08:03:13,722 update error. domainId: 2476, operator name: GetsBet.ro 
+2022-02-10 08:03:13,722 update error. domainId: 2476, operator name: GetsBet.ro 
+2022-02-10 08:03:18,733 update error. domainId: 2007, operator name: Mavibet 
+2022-02-10 08:03:19,423 update error. domainId: 2183, operator name: Betdoksan 
+2022-02-10 08:03:20,673 update error. domainId: 2268, operator name: Mysino 
+2022-02-10 08:03:22,381 update error. domainId: 1066, operator name: Dragonara.com 
+2022-02-10 08:03:22,381 update error. domainId: 1066, operator name: Dragonara.com 
+2022-02-10 08:03:25,296 update error. domainId: 2247, operator name: wunderino.de 
+2022-02-10 08:03:26,304 update error. domainId: 1634, operator name: SpinIt 
+2022-02-10 08:03:26,304 update error. domainId: 1634, operator name: SpinIt 
+2022-02-10 08:03:28,170 update error. domainId: 2357, operator name: winmasters.com 
+2022-02-10 08:03:30,274 update error. domainId: 2062, operator name: Kassu 
+2022-02-10 08:03:32,015 update error. domainId: 2096, operator name: demo prod 
+2022-02-10 08:03:32,973 update error. domainId: 2523, operator name: Catsino.club 
+2022-02-10 08:03:33,426 update error. domainId: 2523, operator name: Catsino.club 
+2022-02-10 08:03:35,211 update error. domainId: 1096, operator name: CasinoCruise 
+2022-02-10 08:03:35,211 update error. domainId: 1096, operator name: CasinoCruise 
+2022-02-10 08:03:39,514 update error. domainId: 2571, operator name: GmMilestone1.5 
+2022-02-10 08:03:39,515 update error. domainId: 2571, operator name: GmMilestone1.5 
+2022-02-10 08:03:40,335 update error. domainId: 1855, operator name: Spela 
+2022-02-10 08:03:40,335 update error. domainId: 1855, operator name: Spela 
+2022-02-10 08:03:42,251 update error. domainId: 2529, operator name: uk.bet-at-home.com 
+2022-02-10 08:03:45,025 update error. domainId: 2189, operator name: Torobet 
+2022-02-10 08:03:45,775 update error. domainId: 2576, operator name: GmMilestone1.5 
+2022-02-10 08:03:45,775 update error. domainId: 2576, operator name: GmMilestone1.5 
+2022-02-10 08:03:46,026 update error. domainId: 2367, operator name: Izibet.com 
+2022-02-10 08:03:46,027 update error. domainId: 2367, operator name: Izibet.com 
+2022-02-10 08:03:48,138 update error. domainId: 1831, operator name: Spela 
+2022-02-10 08:03:48,139 update error. domainId: 1831, operator name: Spela 
+2022-02-10 08:03:48,408 Update sites version ends. total spent time : 177.90104180015624 
+2022-02-10 08:03:48,409 
+2022-02-10 08:03:48,409 
+2022-02-10 08:03:48,409 
+2022-02-10 08:03:48,409 
+2022-02-10 08:03:48,410 Manual update successfully.
+2022-02-10 08:03:48,412 127.0.0.1 - - [10/Feb/2022 08:03:48] "GET /update_version HTTP/1.1" 200 -
