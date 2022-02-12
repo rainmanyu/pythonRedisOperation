@@ -16,7 +16,7 @@ def hello_world():
     return 'Hello World!'
 
 
-@app.route('/site/<domain_id>', methods=['POST', 'GET'])
+@app.route('/site/<key>', methods=['POST', 'GET'])
 def get_site_by_domain_id(key):
     if request.method == 'GET':
         return jsonify(redisOperation.read_site(key))
