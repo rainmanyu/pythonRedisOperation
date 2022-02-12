@@ -17,12 +17,12 @@ def hello_world():
 
 
 @app.route('/site/<domain_id>', methods=['POST', 'GET'])
-def get_site_by_domain_id(domain_id):
+def get_site_by_domain_id(key):
     if request.method == 'GET':
-        return jsonify(redisOperation.read_site(domain_id))
+        return jsonify(redisOperation.read_site(key))
     else:
         data = json.loads(request.get_data(as_text=True))
-        b_rtn = redisOperation.write_site(str(data['domainId']), data)
+        b_rtn = redisOperation.write_site(str(data['key']), data)
         print(b_rtn)
         return jsonify({"status": "ok"})
 

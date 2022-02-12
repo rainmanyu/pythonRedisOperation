@@ -6,6 +6,7 @@ import logging
 import time
 import timeit
 
+
 def baseurl(fullurl, key):
     pos = fullurl.find(key)
     return fullurl[0:pos - 1]
@@ -61,6 +62,17 @@ def parse_json(json_content):
         redisOperation.write_site(key, element)
 
 
+def correct_env(env):
+    if env.lower().find('stage') != -1:
+        env = 'stage'
+    elif env.lower().find('prod') != -1:
+        env = 'production'
+    else:
+        env = env + '_error'
+
+    return env
+
+
 def update_site(element):
     # set playerAPI base url
     player_base = baseurl(element['playerAPI'], 'v1/player/')
@@ -85,6 +97,17 @@ def update_site(element):
     # update time
     element.update({config.constants.c_update_time: time.ctime()})
 
+    # update env
+    # element.update({'environment': correct_env(element['environment'])})
+    # element.update({'k': element['domainId']})
+    # print(element['key'])
+    # if not (element['key'] is None):
+    #     if element['domainId'] != element['key']:
+    #         element.update({'status': 'error'})
+    # else:
+    #     element.update({'key': element['domainId']})
+
+
 
 def update_versions():
     logging.info("Update sites version starts : %s ", time.ctime())
@@ -94,7 +117,7 @@ def update_versions():
         update_site(element)
         redisOperation.write_site(element['domainId'], element)
     stop = timeit.default_timer()
-    spent_time = stop-start
+    spent_time = stop - start
     logging.info("Update sites version ends. total spent time : %s ", spent_time)
     logging.info("")
     logging.info("")

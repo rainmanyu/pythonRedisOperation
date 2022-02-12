@@ -4,13 +4,13 @@ import json
 r = redis.Redis(host='10.2.16.113', port=6379)
 
 
-def write_site(domain_id, operator_info):
-    b_return = r.set(domain_id, json.dumps(operator_info))
+def write_site(key, operator_info):
+    b_return = r.set(key, json.dumps(operator_info))
     return b_return
 
 
-def read_site(domain_id):
-    json_str = r.get(domain_id)
+def read_site(key):
+    json_str = r.get(key)
 
     if json_str is not None:
         return json.loads(json_str)
