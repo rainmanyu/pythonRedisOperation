@@ -9,6 +9,11 @@ def write_site(key, operator_info):
     return b_return
 
 
+def delete_site(key):
+    b_rtn = r.delete(key)
+    return b_rtn
+
+
 def read_site(key):
     json_str = r.get(key)
 

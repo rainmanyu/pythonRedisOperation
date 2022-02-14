@@ -16,15 +16,27 @@ def hello_world():
     return 'Hello World!'
 
 
-@app.route('/site/<key>', methods=['POST', 'GET'])
+@app.route('/site/<key>', methods=['POST', 'GET', 'PUT', 'DELETE'])
 def get_site_by_domain_id(key):
     if request.method == 'GET':
         return jsonify(redisOperation.read_site(key))
-    else:
+    elif request.method == 'PUT':
+        # update a site
         data = json.loads(request.get_data(as_text=True))
         b_rtn = redisOperation.write_site(str(data['key']), data)
-        print(b_rtn)
-        return jsonify({"status": "ok"})
+        return jsonify({"status": "ok", "flag": b_rtn})
+    elif request.method == 'POST':
+        # new a site
+        data = json.loads(request.get_data(as_text=True))
+        key = str(data['key'])
+        while redisOperation.read_site(key) is not None:
+            key = jsonUtil.rename_domain_key(key)
+        data['key'] = key
+        w_rtn = redisOperation.write_site(str(key), data)
+        return jsonify({"status": "ok", "key": key, "flag": w_rtn})
+    elif request.method == 'DELETE':
+        d_rtn = redisOperation.delete_site(key)
+        return jsonify({"status": "ok", "key": key, "flag": d_rtn})
 
 
 @app.route('/sites')

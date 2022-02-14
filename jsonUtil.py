@@ -108,7 +108,6 @@ def update_site(element):
     #     element.update({'key': element['domainId']})
 
 
-
 def update_versions():
     logging.info("Update sites version starts : %s ", time.ctime())
     start = timeit.default_timer()
