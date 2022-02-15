@@ -1,4 +1,5 @@
 import json
+from decimal import Decimal
 
 from flask import Flask, request, Response, jsonify
 from flask_cors import CORS
@@ -57,10 +58,10 @@ def update_version():
     finally:
         if flag:
             logging.info("Manual update successfully.")
-            return jsonify({"status": "ok", "spent_time": spent_time})
+            return jsonify({"status": "ok", "spent_time": Decimal(spent_time).quantize(Decimal('0.00'))})
         else:
             logging.info("Manual update failed.")
-            return jsonify({"status": "error", "spent_time": spent_time})
+            return jsonify({"status": "error", "spent_time": Decimal(spent_time).quantize(Decimal('0.00'))})
 
 
 @app.route('/version_tag/<key>', methods=['PUT'])
@@ -81,10 +82,11 @@ def update_site_tag(key):
     finally:
         if flag:
             logging.info("Manual update successfully.")
-            return jsonify({"status": "ok", "spent_time": spent_time, "errorMessage": error_message})
+            return jsonify({"status": "ok", "spent_time": Decimal(spent_time).quantize(Decimal('0.00')), "errorMessage": error_message})
         else:
             logging.info("Manual update failed.")
-            return jsonify({"status": "error", "spent_time": spent_time, "errorMessage": error_message})
+            return jsonify({"status": "error", "spent_time": Decimal(spent_time).quantize(Decimal('0.00')),
+                            "errorMessage": error_message})
 
 
 if __name__ == '__main__':
