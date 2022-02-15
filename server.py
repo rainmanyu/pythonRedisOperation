@@ -6,6 +6,8 @@ from flask_cors import CORS
 import redisOperation
 import logging
 import jsonUtil
+import time
+import timeit
 
 app = Flask(__name__)
 CORS(app)
@@ -59,6 +61,30 @@ def update_version():
         else:
             logging.info("Manual update failed.")
             return jsonify({"status": "error", "spent_time": spent_time})
+
+
+@app.route('/version_tag/<key>', methods=['PUT'])
+def update_site_tag(key):
+    logging.info("Update sites version manually")
+    flag = False
+    spent_time = 0
+    error_message = 'Unknown Error'
+    try:
+        spent_time = jsonUtil.update_site_tag(key)
+        if spent_time is not None:
+            error_message = ''
+            flag = True
+        else:
+            flag = False
+            spent_time = 0
+            error_message = 'site not existed. key:' + key
+    finally:
+        if flag:
+            logging.info("Manual update successfully.")
+            return jsonify({"status": "ok", "spent_time": spent_time, "errorMessage": error_message})
+        else:
+            logging.info("Manual update failed.")
+            return jsonify({"status": "error", "spent_time": spent_time, "errorMessage": error_message})
 
 
 if __name__ == '__main__':

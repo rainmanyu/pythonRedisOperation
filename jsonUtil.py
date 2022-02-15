@@ -123,3 +123,25 @@ def update_versions():
     logging.info("")
     logging.info("")
     return spent_time
+
+
+def update_site_tag(key):
+    logging.info("Update site version starts : %s ", time.ctime())
+    start = timeit.default_timer()
+    site = redisOperation.read_site(key)
+    if site is not None:
+        update_site(site)
+        redisOperation.write_site(key, site)
+        stop = timeit.default_timer()
+        spent_time = stop - start
+
+        logging.info("Update site tag ends. key: %s total spent time : %s , write redis status:", key, spent_time)
+        logging.info("")
+        logging.info("")
+        logging.info("")
+        logging.info("")
+
+        return spent_time
+    else:
+        logging.error("site is None, key:" + key)
+        return None
