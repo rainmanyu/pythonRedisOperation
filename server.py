@@ -1,8 +1,11 @@
+import cgi
 import json
 from decimal import Decimal
-
-from flask import Flask, request, Response, jsonify
+import openpyxl
+import pandas as pd
+from flask import Flask, request, Response, jsonify, flash
 from flask_cors import CORS
+from werkzeug.utils import redirect
 
 import redisOperation
 import logging
@@ -87,6 +90,25 @@ def update_site_tag(key):
             logging.info("Manual update failed.")
             return jsonify({"status": "error", "spent_time": Decimal(spent_time).quantize(Decimal('0.00')),
                             "errorMessage": error_message})
+
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    if request.method == 'POST':
+        file = request.files['file']
+        if file is not None:
+            excel_raw_data_1 = pd.read_excel(file, sheet_name='Sheet2')
+            header_list = excel_raw_data_1.columns.ravel()
+            data_str = excel_raw_data_1.to_json(orient='records')
+            data_json = json.loads(data_str)
+            print('clear db')
+            redisOperation.delete_all()
+            print('parse data')
+            jsonUtil.parse_sites_json(data_json)
+            print('end')
+
+            return "ok"
+    return 'ok'
 
 
 if __name__ == '__main__':

@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68ce3406-9278-4ba3-b907-6285297ec6ce" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/httpUtils/run.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsonUtil.py" beforeDir="false" afterPath="$PROJECT_DIR$/jsonUtil.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redisOperation.py" beforeDir="false" afterPath="$PROJECT_DIR$/redisOperation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +87,7 @@
       <recent name="D:\git\pythonRedisOperation\fileLoad" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.server (1)">
+  <component name="RunManager" selected="Python.server">
     <configuration name="jsonUtil" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pythonRedisOperation" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -107,7 +110,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="load_data_from_file (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="redisOperation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pythonRedisOperation" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -115,12 +118,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/fileLoad" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fileLoad/load_data_from_file.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/redisOperation.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -196,19 +198,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.load_data_from_file (1)" />
       <item itemvalue="Python.server" />
       <item itemvalue="Python.server (1)" />
       <item itemvalue="Python.jsonUtil" />
       <item itemvalue="Python.test" />
+      <item itemvalue="Python.redisOperation" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.server" />
+        <item itemvalue="Python.redisOperation" />
         <item itemvalue="Python.server (1)" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.jsonUtil" />
-        <item itemvalue="Python.server" />
-        <item itemvalue="Python.load_data_from_file (1)" />
       </list>
     </recent_temporary>
   </component>

@@ -1,10 +1,11 @@
 import json
 import redisOperation
 import httpUtils.getVersion
-import config.constants
+import config.constants as c
 import logging
 import time
 import timeit
+import jsonUtil
 
 
 def baseurl(fullurl, key):
@@ -40,9 +41,9 @@ def parse_json(json_content):
 
         # add casino version
         update_version(element, player_base,
-                       config.constants.c_player_version_path,
-                       config.constants.c_player_version_tag,
-                       config.constants.c_player_version_deploy_time)
+                       c.c_player_version_path,
+                       c.c_redis_key_player_version_tag,
+                       c.c_redis_key_player_version_deploy_time)
 
         # set casinoAPI base url
         casino_base = baseurl(element['casinoAPI'], 'v1/casino/')
@@ -50,12 +51,12 @@ def parse_json(json_content):
 
         # add casino version
         update_version(element, casino_base,
-                       config.constants.c_casino_version_path,
-                       config.constants.c_casino_version_tag,
-                       config.constants.c_casino_version_deploy_time)
+                       c.c_casino_version_path,
+                       c.c_redis_key_casino_version_tag,
+                       c.c_redis_key_casino_version_deploy_time)
 
         # add FE, the default value
-        element.update({config.constants.c_frontend_tag: config.constants.c_frontend_src_em})
+        element.update({c.c_redis_key_frontend: c.c_frontend_src_em})
 
         # rename duplicate id
         key = rename_domain_key(str(element['domainId']))
@@ -80,9 +81,9 @@ def update_site(element):
 
     # add casino version
     update_version(element, player_base,
-                   config.constants.c_player_version_path,
-                   config.constants.c_player_version_tag,
-                   config.constants.c_player_version_deploy_time)
+                   c.c_player_version_path,
+                   c.c_redis_key_player_version_tag,
+                   c.c_redis_key_player_version_deploy_time)
 
     # set casinoAPI base url
     casino_base = baseurl(element['casinoAPI'], 'v1/casino/')
@@ -90,12 +91,12 @@ def update_site(element):
 
     # add casino version
     update_version(element, casino_base,
-                   config.constants.c_casino_version_path,
-                   config.constants.c_casino_version_tag,
-                   config.constants.c_casino_version_deploy_time)
+                   c.c_casino_version_path,
+                   c.c_redis_key_casino_version_tag,
+                   c.c_redis_key_casino_version_deploy_time)
 
     # update time
-    element.update({config.constants.c_update_time: time.ctime()})
+    element.update({c.c_redis_key_update_time: time.ctime()})
 
     # update env
     # element.update({'environment': correct_env(element['environment'])})
@@ -145,3 +146,54 @@ def update_site_tag(key):
     else:
         logging.error("site is None, key:" + key)
         return None
+
+
+def get_valid_value(value):
+    if value is not None:
+        return value
+    else:
+        return ""
+
+
+def parse_sites_json(sites):
+    json_info = '{}'
+    json_obj = json.loads(json_info)
+    for element in sites:
+        json_obj.update({c.c_redis_key_operator_group: get_valid_value(element[c.c_json_key_operator_group])})
+        json_obj.update({c.c_redis_key_operator: get_valid_value(element[c.c_json_key_operator])})
+        json_obj.update({c.c_redis_key_domain_id: get_valid_value(element[c.c_json_key_domain_id])})
+        json_obj.update({c.c_redis_key_gm_core_env: get_valid_value(element[c.c_json_key_gm_core_env])})
+        json_obj.update({c.c_redis_key_partner_id: get_valid_value(element[c.c_json_key_partner_id])})
+
+        json_obj.update({c.c_redis_key_partner_key: get_valid_value(element[c.c_json_key_partner_key])})
+        json_obj.update({c.c_redis_key_environment: get_valid_value(element[c.c_json_key_environment])})
+        json_obj.update({c.c_redis_key_frontend: get_valid_value(element[c.c_json_key_frontend])})
+        json_obj.update({c.c_redis_key_region: get_valid_value(element[c.c_json_key_region])})
+        json_obj.update({c.c_redis_key_status: get_valid_value(element[c.c_json_key_status])})
+
+        json_obj.update({c.c_redis_key_player_api: get_valid_value(element[c.c_json_key_player_api])})
+        json_obj.update({c.c_redis_key_casino_api: get_valid_value(element[c.c_json_key_casino_api])})
+        json_obj.update({c.c_redis_key_live_lobby: get_valid_value(element[c.c_json_key_live_lobby])})
+        json_obj.update({c.c_redis_key_gic: get_valid_value(element[c.c_json_key_gic])})
+        json_obj.update({c.c_redis_key_notification: get_valid_value(element[c.c_json_key_notification])})
+
+        json_obj.update({c.c_redis_key_balance_updates: get_valid_value(element[c.c_json_key_balance_updates])})
+
+        json_obj.update({c.c_redis_key_casino_base: c.c_not_ready})
+        json_obj.update({c.c_redis_key_casino_version_tag: c.c_not_ready})
+        json_obj.update({c.c_redis_key_casino_version_deploy_time: c.c_not_ready})
+
+        json_obj.update({c.c_redis_key_player_base: c.c_not_ready})
+        json_obj.update({c.c_redis_key_player_version_tag: c.c_not_ready})
+        json_obj.update({c.c_redis_key_player_version_deploy_time: c.c_not_ready})
+
+        json_obj.update({c.c_redis_key_update_time: c.c_not_ready})
+
+        key = str(element[c.c_json_key_domain_id])
+        print(key)
+        while redisOperation.read_site(key) is not None:
+            key = jsonUtil.rename_domain_key(key)
+        json_obj.update({c.c_redis_key_key: str(key)})
+        w_rtn = redisOperation.write_site(str(key), json_obj)
+        print(w_rtn)
+    print('finish writing all site')

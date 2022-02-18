@@ -1,7 +1,8 @@
 import redis
 import json
 
-r = redis.Redis(host='10.2.16.113', port=6379)
+r = redis.Redis(host='10.2.16.113', port=6379, db=1)
+# redis = redis.Redis(host='35.235.36.138', port=6379, db=1)
 
 
 def write_site(key, operator_info):
@@ -16,7 +17,6 @@ def delete_site(key):
 
 def read_site(key):
     json_str = r.get(key)
-
     if json_str is not None:
         return json.loads(json_str)
     else:
@@ -39,5 +39,7 @@ def read_sites():
 
 
 def delete_all():
-    for elem in r.keys():
-        r.delete(elem)
+    r.flushall()
+    # for elem in r.keys():
+    #     r.delete(elem)
+
