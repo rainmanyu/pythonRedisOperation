@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68ce3406-9278-4ba3-b907-6285297ec6ce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/httpUtils/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redisOperation.py" beforeDir="false" afterPath="$PROJECT_DIR$/redisOperation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,7 +85,7 @@
       <recent name="D:\git\pythonRedisOperation\fileLoad" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.server">
+  <component name="RunManager" selected="Python.server (1)">
     <configuration name="jsonUtil" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pythonRedisOperation" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -203,9 +204,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.server (1)" />
         <item itemvalue="Python.server" />
         <item itemvalue="Python.redisOperation" />
-        <item itemvalue="Python.server (1)" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.jsonUtil" />
       </list>

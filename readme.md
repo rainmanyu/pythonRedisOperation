@@ -13,6 +13,7 @@ pip3 install flask
 pip3 install flask_cors
 pip3 install redis
 pip3 install Timeloop
+pip3 install pandas
 git clone -b main https://github.com/rainmanyu/pythonRedisOperation.git
 
 nohup python3 server.py &
