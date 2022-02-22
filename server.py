@@ -93,20 +93,27 @@ def update_site_tag(key):
 @app.route('/upload', methods=['POST'])
 def upload_file():
     if request.method == 'POST':
-        file = request.files['file']
-        if file is not None:
-            excel_raw_data_1 = pd.read_excel(file, sheet_name='Sheet2')
-            header_list = excel_raw_data_1.columns.ravel()
-            data_str = excel_raw_data_1.to_json(orient='records')
-            data_json = json.loads(data_str)
-            print('clear db')
-            redisOperation.delete_all()
-            print('parse data')
-            jsonUtil.parse_sites_json(data_json)
-            print('end')
-
-            return "ok"
-    return 'ok'
+        try:
+            file = request.files['file']
+            if file is not None:
+                print('start read excel')
+                print(file)
+                excel_raw_data_1 = pd.read_excel(file, sheet_name='Sheet2')
+                header_list = excel_raw_data_1.columns.ravel()
+                data_str = excel_raw_data_1.to_json(orient='records')
+                data_json = json.loads(data_str)
+                print('clear db')
+                redisOperation.delete_all()
+                print('parse data')
+                jsonUtil.parse_sites_json(data_json)
+                print('end')
+                return "ok"
+        except IOError:
+            print('IO error')
+        else:
+            print('no error')
+    else:
+        return "not supported method."
 
 
 if __name__ == '__main__':
