@@ -114,6 +114,8 @@ def upload_file():
             print('IO error')
         else:
             print('no error')
+        finally:
+            print('finally')
     else:
         return "not supported method."
 
