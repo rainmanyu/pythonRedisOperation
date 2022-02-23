@@ -1,4 +1,5 @@
 import json
+import traceback
 from decimal import Decimal
 import json
 import logging
@@ -110,8 +111,9 @@ def upload_file():
                 jsonUtil.parse_sites_json(data_json)
                 print('end')
                 return "ok"
-        except IOError:
-            print('IO error')
+        except Exception as ex:
+            print(ex)
+            traceback.print_exc()
         else:
             print('no error')
         finally:
