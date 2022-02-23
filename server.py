@@ -99,7 +99,7 @@ def upload_file():
             if file is not None:
                 print('start read excel')
                 print(file)
-                excel_raw_data_1 = pd.read_excel(file, sheet_name='Sheet2')
+                excel_raw_data_1 = pd.read_excel(file, sheet_name='Sheet2', engine='openpyxl')
                 print(excel_raw_data_1)
                 data_str = excel_raw_data_1.to_json(orient='records')
                 print(data_str)
