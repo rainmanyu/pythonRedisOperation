@@ -11,6 +11,8 @@ from flask_cors import CORS
 
 import jsonUtil
 import redisOperation
+import time
+import timeit
 
 app = Flask(__name__)
 CORS(app)
@@ -84,7 +86,8 @@ def update_site_tag(key):
     finally:
         if flag:
             logging.info("Manual update successfully.")
-            return jsonify({"status": "ok", "spent_time": Decimal(spent_time).quantize(Decimal('0.00')), "errorMessage": error_message})
+            return jsonify({"status": "ok", "spent_time": Decimal(spent_time).quantize(Decimal('0.00')),
+                            "errorMessage": error_message})
         else:
             logging.info("Manual update failed.")
             return jsonify({"status": "error", "spent_time": Decimal(spent_time).quantize(Decimal('0.00')),
@@ -94,26 +97,33 @@ def update_site_tag(key):
 @app.route('/upload', methods=['POST'])
 def upload_file():
     if request.method == 'POST':
+        start = timeit.default_timer()
         try:
+
             file = request.files['file']
             if file is not None:
                 print('start read excel')
-                print(file)
                 excel_raw_data_1 = pd.read_excel(file, sheet_name='Sheet2', engine='openpyxl')
                 print(excel_raw_data_1)
                 data_str = excel_raw_data_1.to_json(orient='records')
-                print(data_str)
                 data_json = json.loads(data_str)
-                print(data_json)
-                print('clear db')
                 redisOperation.delete_all()
-                print('parse data')
                 jsonUtil.parse_sites_json(data_json)
                 print('end')
-                return "ok"
+                spent_time = timeit.default_timer() - start
+
+                return jsonify({"status": "ok",
+                                "spent_time": Decimal(spent_time).quantize(Decimal('0.00')),
+                                "error_message": "",
+                                "flag": True})
         except Exception as ex:
             print(ex)
             traceback.print_exc()
+            spent_time = timeit.default_timer() - start
+            return jsonify({"status": "ok",
+                            "spent_time": Decimal(spent_time).quantize(Decimal('0.00')),
+                            "error_message": traceback.print_exc(),
+                            "flag": False})
         else:
             print('no error')
         finally:
@@ -124,4 +134,4 @@ def upload_file():
 
 if __name__ == '__main__':
     logging.basicConfig(filename='run.log', level=logging.DEBUG, format='%(asctime)s %(message)s')
-    app.run(host='0.0.0.0', port=9876)
+    app.run(host='0.0.0.0', port=9888)

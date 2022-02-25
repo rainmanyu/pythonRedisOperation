@@ -1,7 +1,7 @@
 import redis
 import json
 
-r = redis.Redis(host='10.2.16.113', port=6379, db=9)
+r = redis.Redis(host='10.2.16.113', port=6379, db=0)
 # redis = redis.Redis(host='35.235.36.138', port=6379, db=1)
 
 
