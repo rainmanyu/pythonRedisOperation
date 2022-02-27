@@ -128,7 +128,8 @@ def get_valid_value(value):
     try:
         if value is not None:
             if isinstance(value, str):
-                return lstrip(value)
+                # strip would cause some exception, to be investigated later
+                return value
             else:
                 return value
         else:
@@ -137,7 +138,6 @@ def get_valid_value(value):
         print(value)
         print(ex)
         return value
-
 
 
 def parse_sites_json(sites):
