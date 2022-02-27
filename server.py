@@ -104,16 +104,15 @@ def upload_file():
             if file is not None:
                 print('start read excel')
                 excel_raw_data_1 = pd.read_excel(file, sheet_name='Sheet2', engine='openpyxl')
-                print(excel_raw_data_1)
                 data_str = excel_raw_data_1.to_json(orient='records')
                 data_json = json.loads(data_str)
                 redisOperation.delete_all()
                 jsonUtil.parse_sites_json(data_json)
-                print('end')
                 spent_time = timeit.default_timer() - start
-
+                spent_time_str = str(Decimal(spent_time).quantize(Decimal('0.00')))
+                print('end. spent time:' + spent_time_str)
                 return jsonify({"status": "ok",
-                                "spent_time": Decimal(spent_time).quantize(Decimal('0.00')),
+                                "spent_time": spent_time_str,
                                 "error_message": "",
                                 "flag": True})
         except Exception as ex:
@@ -124,10 +123,6 @@ def upload_file():
                             "spent_time": Decimal(spent_time).quantize(Decimal('0.00')),
                             "error_message": traceback.print_exc(),
                             "flag": False})
-        else:
-            print('no error')
-        finally:
-            print('finally')
     else:
         return "not supported method."
 

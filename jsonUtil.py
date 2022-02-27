@@ -1,4 +1,7 @@
 import json
+
+from numpy.core.defchararray import strip, lstrip
+
 import redisOperation
 import httpUtils.getVersion
 import config.constants as c
@@ -6,6 +9,7 @@ import logging
 import time
 import timeit
 import jsonUtil
+import traceback
 
 
 def baseurl(fullurl, key):
@@ -28,39 +32,10 @@ def update_version(element, base, path, tag_name, deploy_time_name):
         element.update({tag_name: version_json['tag']})
         element.update({deploy_time_name: version_json['deployTime']})
     else:
+        print('error. key:' + str(element['key']))
         logging.error("update error. domainId: %s, operator name: %s ", element['domainId'], element['operatorName'])
         element.update({tag_name: 'not_ready'})
         element.update({deploy_time_name: 'not_ready'})
-
-
-def parse_json(json_content):
-    for element in json_content['list']:
-        # set playerAPI base url
-        player_base = baseurl(element['playerAPI'], 'v1/player/')
-        element.update({"player_base": player_base})
-
-        # add casino version
-        update_version(element, player_base,
-                       c.c_player_version_path,
-                       c.c_redis_key_player_version_tag,
-                       c.c_redis_key_player_version_deploy_time)
-
-        # set casinoAPI base url
-        casino_base = baseurl(element['casinoAPI'], 'v1/casino/')
-        element.update({"casino-base": casino_base})
-
-        # add casino version
-        update_version(element, casino_base,
-                       c.c_casino_version_path,
-                       c.c_redis_key_casino_version_tag,
-                       c.c_redis_key_casino_version_deploy_time)
-
-        # add FE, the default value
-        element.update({c.c_redis_key_frontend: c.c_frontend_src_em})
-
-        # rename duplicate id
-        key = rename_domain_key(str(element['domainId']))
-        redisOperation.write_site(key, element)
 
 
 def correct_env(env):
@@ -75,47 +50,48 @@ def correct_env(env):
 
 
 def update_site(element):
-    # set playerAPI base url
-    player_base = baseurl(element['playerAPI'], 'v1/player/')
-    element.update({"player_base": player_base})
+    b_rtn = False
+    key = element['key']
+    try:
+        # set playerAPI base url
+        player_base = baseurl(element['playerAPI'], 'v1/player/')
+        element.update({c.c_redis_key_player_version_url: player_base+c.c_player_version_path})
 
-    # add casino version
-    update_version(element, player_base,
-                   c.c_player_version_path,
-                   c.c_redis_key_player_version_tag,
-                   c.c_redis_key_player_version_deploy_time)
+        # add casino version
+        update_version(element, player_base,
+                       c.c_player_version_path,
+                       c.c_redis_key_player_version_tag,
+                       c.c_redis_key_player_version_deploy_time)
 
-    # set casinoAPI base url
-    casino_base = baseurl(element['casinoAPI'], 'v1/casino/')
-    element.update({"casino-base": casino_base})
+        # set casinoAPI base url
+        casino_base = baseurl(element['casinoAPI'], 'v1/casino/')
+        element.update({c.c_redis_key_casino_version_url: casino_base+c.c_casino_version_path})
 
-    # add casino version
-    update_version(element, casino_base,
-                   c.c_casino_version_path,
-                   c.c_redis_key_casino_version_tag,
-                   c.c_redis_key_casino_version_deploy_time)
+        # add casino version
+        update_version(element, casino_base,
+                       c.c_casino_version_path,
+                       c.c_redis_key_casino_version_tag,
+                       c.c_redis_key_casino_version_deploy_time)
 
-    # update time
-    element.update({c.c_redis_key_update_time: time.ctime()})
-
-    # update env
-    # element.update({'environment': correct_env(element['environment'])})
-    # element.update({'k': element['domainId']})
-    # print(element['key'])
-    # if not (element['key'] is None):
-    #     if element['domainId'] != element['key']:
-    #         element.update({'status': 'error'})
-    # else:
-    #     element.update({'key': element['domainId']})
+        # update time
+        element.update({c.c_redis_key_update_time: time.ctime()})
+        b_rtn = True
+    except Exception as ex:
+        print('Exception. key:' + str(key))
+        print(ex)
+        traceback.print_exc()
+        b_rtn = False
+    finally:
+        return b_rtn
 
 
 def update_versions():
     logging.info("Update sites version starts : %s ", time.ctime())
     start = timeit.default_timer()
     sites = redisOperation.read_sites()
-    for element in sites['list']:
-        update_site(element)
-        redisOperation.write_site(element['domainId'], element)
+    for site_in_all in sites['list']:
+        update_site(site_in_all)
+        redisOperation.write_site(site_in_all['key'], site_in_all)
     stop = timeit.default_timer()
     spent_time = stop - start
     logging.info("Update sites version ends. total spent time : %s ", spent_time)
@@ -149,10 +125,19 @@ def update_site_tag(key):
 
 
 def get_valid_value(value):
-    if value is not None:
+    try:
+        if value is not None:
+            if isinstance(value, str):
+                return lstrip(value)
+            else:
+                return value
+        else:
+            return ""
+    except Exception as ex:
+        print(value)
+        print(ex)
         return value
-    else:
-        return ""
+
 
 
 def parse_sites_json(sites):
@@ -179,21 +164,19 @@ def parse_sites_json(sites):
 
         json_obj.update({c.c_redis_key_balance_updates: get_valid_value(element[c.c_json_key_balance_updates])})
 
-        json_obj.update({c.c_redis_key_casino_base: c.c_not_ready})
+        json_obj.update({c.c_redis_key_casino_version_url: c.c_not_ready})
         json_obj.update({c.c_redis_key_casino_version_tag: c.c_not_ready})
         json_obj.update({c.c_redis_key_casino_version_deploy_time: c.c_not_ready})
 
-        json_obj.update({c.c_redis_key_player_base: c.c_not_ready})
+        json_obj.update({c.c_redis_key_player_version_url: c.c_not_ready})
         json_obj.update({c.c_redis_key_player_version_tag: c.c_not_ready})
         json_obj.update({c.c_redis_key_player_version_deploy_time: c.c_not_ready})
 
         json_obj.update({c.c_redis_key_update_time: c.c_not_ready})
 
         key = str(element[c.c_json_key_domain_id])
-        print(key)
         while redisOperation.read_site(key) is not None:
             key = jsonUtil.rename_domain_key(key)
         json_obj.update({c.c_redis_key_key: str(key)})
         w_rtn = redisOperation.write_site(str(key), json_obj)
-        print(w_rtn)
     print('finish writing all site')

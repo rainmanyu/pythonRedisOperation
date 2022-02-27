@@ -1,7 +1,7 @@
 c_player_version_path = '/v1/player/versionInfo'
 c_casino_version_path = '/v1/casino/versionInfo'
 
-c_not_ready = 'not_ready'
+c_not_ready = 'not_ready_0'
 
 # frontend
 c_frontend_src_em = 'EM_FE'
@@ -49,11 +49,17 @@ c_json_key_balance_updates = 'Balance updates'
 c_redis_key_balance_updates = 'BalanceUpdate'
 
 
-c_redis_key_casino_base = 'casino-base'
+c_redis_key_casino_version_url = 'casino_version_url'
 c_redis_key_casino_version_tag = 'casino_version_tag'
 c_redis_key_casino_version_deploy_time = 'casino_version_deploy_time'
-c_redis_key_player_base = 'player-base'
+c_redis_key_player_version_url = 'player_version_url'
 c_redis_key_player_version_tag = 'player_version_tag'
 c_redis_key_player_version_deploy_time = 'player_version_deploy_time'
 c_redis_key_update_time = 'update_time'
 c_redis_key_key = 'key'
+
+
+c_default_version_info_url_empty = {'domainId': 0, 'tag': 'not_ready_1', 'deployTime': 'not_ready_1'}
+c_default_version_info_404_url_not_found = {'domainId': 0, 'tag': 'not_ready_2', 'deployTime': 'not_ready_2'}
+
+
